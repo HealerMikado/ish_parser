@@ -1,3 +1,4 @@
+import json
 class ObservationException(BaseException):
   ''' base exception handling class for  ish_observations'''
 
@@ -33,3 +34,6 @@ class Observation(object):
           return float('NaN')
       else:
           return float(self._obs_value)
+
+  def asJson(self):
+      return dict(value=self._obs_value, quality=self._obs_quality)

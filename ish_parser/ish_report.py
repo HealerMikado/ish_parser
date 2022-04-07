@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta
 import logging
 import pytz
+import json
 
 from .Temperature import Temperature
 from .Speed import Speed
@@ -315,6 +316,25 @@ Solar Irradiance: %s
            str(self.present_weather), str(self.precipitation),
            str(self.sky_cover), str(self.sky_cover_summation),
            str(self.solar_irradiance))
+
+  def toJson(self):
+    ''' Return a json for this report'''
+    dic_repport = {"weather_station": self.weather_station,
+                   "latitude": self.latitude,
+                   "longitude": self.longitude,
+                   "elevation": self.elevation,
+                   "time": self.datetime.isoformat(),
+                   "air_temperature": self.air_temperature.asJson(),
+                   "dew_point": self.dew_point.asJson(),
+                   "wind_speed": self.wind_speed.asJson(),
+                   "wind_direction": self.wind_direction.asJson(),
+                   "sea_level_pressure":self.sea_level_pressure.asJson(),
+                   "sky_ceiling":self.sky_ceiling.asJson(),
+                   "visibility_distance":self.visibility_distance.asJson(),
+                   "sea_level_pressure":self.sea_level_pressure.asJson(),
+                }
+    return json.dumps(dic_repport)
+
 
   def loads(self, noaa_string):
     ''' load in a report (or set) from a string '''
