@@ -22,3 +22,7 @@ class WindObservationComponent(BaseComponent):
       'speed': Speed(float(string[3:7]) / 10.0, Speed.METERSPERSECOND, string[7:8]),
       'direction': Direction(string[8:11], Direction.RADIANS)
     }
+
+  def toJson(self):
+    raise NotImplementedError
+

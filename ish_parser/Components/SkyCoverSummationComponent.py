@@ -72,3 +72,6 @@ class SkyCoverSummationComponent(BaseComponent):
 
   def __repr__(self):
     return str(self.sky_cover_summation)
+
+  def toJson(self):
+    raise NotImplementedError

@@ -15,3 +15,7 @@ class SkyConditionObservationComponent(BaseComponent):
 
   def __str__(self):
     return str(self.sky_condition_observation)
+
+  def toJson(self):
+      raise NotImplementedError
+

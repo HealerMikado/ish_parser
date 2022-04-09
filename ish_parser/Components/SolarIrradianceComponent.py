@@ -37,3 +37,6 @@ class SolarIrradianceComponent(BaseComponent):
 
   def __str__(self):
     return str(self.solar_irradiance)
+
+  def toJson(self):
+    raise NotImplementedError

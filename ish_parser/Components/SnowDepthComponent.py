@@ -16,3 +16,6 @@ class SnowDepthComponent(BaseComponent):
 
   def __str__(self):
     return str((self.snow_depth, self.equivalent_water))
+
+  def toJson(self):
+    return  self.snow_depth

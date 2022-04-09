@@ -120,10 +120,10 @@ class ish_report_test(unittest.TestCase):
 
   def test_fm15_json(self):
     noaa_string = """0250725300948462014010100517+41995-087934FM-15+0205KORD V0302505N00155005795MN0024145N5-01115-01445102735ADDAA101000895AU110030015AW1715GA1085+005795991GD14991+0057959GE19MSL   +99999+99999GF199999990990005791991991MA1102575100115REMMET11612/31/13 18:51:03 METAR KORD 010051Z 25003KT 1 1/2SM -SN OVC019 M11/M14 A3029 RMK AO2 SLP273 P0003 T11111144 $ (KLC)"""
-    expected_json = '{"weather_station": "725300", "latitude": 41.995, "longitude": -87.934, "elevation": 205, "time": "2014-01-01T00:51:00+00:00", "air_temperature": {"value": -11.1, "quality": "5"}, "dew_point": {"value": -14.4, "quality": "5"}, "wind_speed": {"value": 1.5, "quality": "5"}, "wind_direction": {"value": "250", "quality": "5"}, "sea_level_pressure": {"value": 1027.3, "quality": ""}, "sky_ceiling": {"value": 579, "quality": "5"}, "visibility_distance": {"value": 2414, "quality": "5"}}'
+    expected_json = '{"weather_station": "725300", "latitude": 41.995, "longitude": -87.934, "elevation": 205, "time": "2014-01-01T00:51:00+00:00", "air_temperature": {"value": -11.1, "quality": "5"}, "dew_point": {"value": -14.4, "quality": "5"}, "wind_speed": {"value": 1.5, "quality": "5"}, "wind_direction": {"value": "250", "quality": "5"}, "sea_level_pressure": {"value": 1027.3, "quality": ""}, "sky_ceiling": {"value": 579, "quality": "5"}, "visibility_distance": {"value": 2414, "quality": "5"}, "liquid_precip": [{"hours": 1, "depth": 0.8}], "weather_occurence": [{"intensity": "Light", "precipitation": "Snow"}], "weather_condition": [{"present_weather_condition": "Snow, slight"}], "sky_cover_condition": [{"coverage": 8.0, "base_height": 579.0, "cloud_type": "59"}]} != {"weather_station": "725300", "latitude": 41.995, "longitude": -87.934, "elevation": 205, "time": "2014-01-01T00:51:00+00:00", "air_temperature": {"value": -11.1, "quality": "5"}, "dew_point": {"value": -14.4, "quality": "5"}, "wind_speed": {"value": 1.5, "quality": "5"}, "wind_direction": {"value": "250", "quality": "5"}, "sea_level_pressure": {"value": 1027.3, "quality": ""}, "sky_ceiling": {"value": 579, "quality": "5"}, "visibility_distance": {"value": 2414, "quality": "5"}, "liquid_precip": [{"hours": 1, "depth": 0.8}], "weather_occurence": [{"intensity": "Light", "precipitation": "Snow"}]}'
     weather = ish_report()
     weather.loads(noaa_string)
-    self.assertEqual(weather.toJson(), expected_json)
+    self.assertEqual(expected_json, weather.toJson())
 
 
   def test_austin(self):

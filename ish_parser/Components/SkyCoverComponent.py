@@ -47,3 +47,9 @@ class SkyCoverComponent(BaseComponent):
 
   def __str__(self):
     return str(self.sky_cover)
+
+  def toJson(self):
+    return {
+      'coverage': self.sky_cover['coverage'].get_numeric(),
+      'base_height': self.sky_cover['base_height'].get_numeric(),
+      'cloud_type': str(self.sky_cover['cloud_type'])}
