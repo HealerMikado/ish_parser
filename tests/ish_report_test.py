@@ -126,6 +126,13 @@ class ish_report_test(unittest.TestCase):
     self.assertEqual(expected_json, weather.toJson())
 
 
+  def test_json(self):
+    noaa_string = "0093010010999992021010103004+70939-008669FM-12+001099999V0203371N0104199999999999999999-00421-00891101731ADDKA1010M-00431KA2010N-00451MA1999999101611MD1210021+9999OC101981OD190101251999REMSYN004BUFR"
+    expected_json = '{"weather_station": "010010", "latitude": 70.939, "longitude": -8.669, "elevation": 10, "time": "2021-01-01T03:00:00+00:00", "air_temperature": {"value": -4.2, "quality": "1"}, "dew_point": {"value": -8.9, "quality": "1"}, "wind_speed": {"value": 10.4, "quality": "1"}, "wind_direction": {"value": "337", "quality": "1"}, "sea_level_pressure": {"value": 1017.3, "quality": ""}, "sky_ceiling": {"value": 99999, "quality": "9"}, "visibility_distance": {"value": 999999, "quality": "9"}, "extreme_temperature": [{"hours": 10, "code": "M", "temperature": {"value": -4.3, "quality": "1"}}, {"hours": 10, "code": "N", "temperature": {"value": -4.5, "quality": "1"}}]}'
+    weather = ish_report()
+    weather.loads(noaa_string)
+    self.assertEqual(expected_json, weather.toJson())
+
   def test_austin(self):
     string = """0190722540139042014042819537+30183-097680FM-15+0151KAUS V0203505N004152200059N0160935N5+03175+00065100325ADDAA101000095GA1005+999999999GD10991+9999999GF100991999999999999999999MA1100445098655REMMET09504/28/14 13:53:02 METAR KAUS 281953Z 35008KT 10SM CLR 32/01 A2966 RMK AO2 SLP032 T03170006 (JP)"""
     weather = ish_report()

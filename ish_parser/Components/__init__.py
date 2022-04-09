@@ -10,3 +10,5 @@ from .SnowDepthComponent import SnowDepthComponent
 from .SolarIrradianceComponent import SolarIrradianceComponent
 from .PressureComponent import PressureComponent
 from .WindObservationComponent import WindObservationComponent
+from .ExtremeAirTemperature import ExtremeAirTemperature
+
